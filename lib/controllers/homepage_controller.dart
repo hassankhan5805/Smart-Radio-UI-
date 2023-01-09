@@ -5,6 +5,7 @@ import '../models/radiotile_item_model.dart';
 
 class HomepageController extends GetxController {
   TextEditingController radiosearchbarController = TextEditingController();
+  TextEditingController languageSearchController = TextEditingController();
 
   Rx<List<RadioTileItemModel>> RadioTileItemModelObj = RxList.filled(
           14,
