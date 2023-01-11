@@ -1,3 +1,4 @@
+import 'package:smartradio/controllers/homepage_controller.dart';
 import 'package:smartradio/widgets/app_bar/appbar.dart';
 import '../../controllers/myaudioplayer_controller.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,16 @@ class MyaudioplayerScreen extends GetWidget<MyaudioplayerController> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               MyAppBar(),
-              SizedBox(height: size.height * 0.1),
+              // SizedBox(height: size.height * 0.1),
+              InkWell(
+                  onTap: () {
+                    Get.back();
+                    Get.find<HomepageController>().auidoSheetVisibility(true);
+                  },
+                  child: Center(
+                    child: Icon(Icons.keyboard_arrow_down_sharp,
+                        size: 50, color: Colors.white),
+                  )),
               CustomImageView(
                 imagePath: ImageConstant.imgRectangle11,
                 height: getVerticalSize(230),

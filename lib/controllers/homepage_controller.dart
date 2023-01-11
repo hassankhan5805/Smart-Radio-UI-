@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../models/radiotile_item_model.dart';
 
 class HomepageController extends GetxController {
+  RxBool auidoSheetVisibility = false.obs;
   TextEditingController radiosearchbarController = TextEditingController();
   TextEditingController languageSearchController = TextEditingController();
 

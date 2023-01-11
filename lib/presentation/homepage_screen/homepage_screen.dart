@@ -78,137 +78,200 @@ class HomepageScreen extends GetWidget<HomepageController> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: getVerticalSize(1000),
-                    child: TabBarView(
+                  Obx(
+                    () => Column(
                       children: [
-                        //TabBar 1 for Favourites
-                        Container(
-                          width: size.width,
-                          decoration: AppDecoration.fillGray800,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount:
-                                controller.RadioTileItemModelObj.value.length,
-                            itemBuilder: (context, index) {
-                              RadioTileItemModel model = controller
-                                  .RadioTileItemModelRecentObj.value[index];
-                              return RadioTile(model);
-                            },
-                          ),
-                        ),
-                        //TabBar 2 for All
-                        Container(
-                          width: size.width,
-                          margin: getMargin(top: 20),
-                          decoration: AppDecoration.fillGray800,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                        SizedBox(
+                          height: getVerticalSize(
+                              controller.auidoSheetVisibility() ? 400 : 1000),
+                          child: TabBarView(
                             children: [
-                              CustomTextFormField(
-                                width: 335,
-                                focusNode: FocusNode(),
-                                controller: controller.radiosearchbarController,
-                                hintText: "msg_search_by_radio".tr,
-                                textInputAction: TextInputAction.done,
-                              ),
-                              ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: controller
-                                    .RadioTileItemModelObj.value.length,
-                                itemBuilder: (context, index) {
-                                  RadioTileItemModel model = controller
-                                      .RadioTileItemModelRecentObj.value[index];
-                                  return RadioTile(model);
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        //TabBar 3  for Region
-                        Container(
-                          width: size.width,
-                          decoration: AppDecoration.fillGray800,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount:
-                                controller.RadioTileItemModelObj.value.length,
-                            itemBuilder: (context, index) {
-                              RadioTileItemModel model = controller
-                                  .RadioTileItemModelRecentObj.value[index];
-                              return RadioTile(model);
-                            },
-                          ),
-                        ),
-                        //TabBar 4 for Language
-                        Container(
-                          width: size.width,
-                          margin: getMargin(top: 20),
-                          decoration: AppDecoration.fillGray800,
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              CustomTextFormField(
-                                width: 335,
-                                focusNode: FocusNode(),
-                                controller: controller.languageSearchController,
-                                hintText: "msg_search_by_radio".tr,
-                                textInputAction: TextInputAction.done,
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: getPadding(top: 21, left: 15),
-                                  child: Text(
-                                    "lbl_select_language".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        AppStyle.txtSFProTextRegular12Gray500,
-                                  ),
+                              //TabBar 1 for Favourites
+                              Container(
+                                width: size.width,
+                                decoration: AppDecoration.fillGray800,
+                                child: ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: controller
+                                      .RadioTileItemModelObj.value.length,
+                                  itemBuilder: (context, index) {
+                                    RadioTileItemModel model = controller
+                                        .RadioTileItemModelRecentObj
+                                        .value[index];
+                                    return RadioTile(model);
+                                  },
                                 ),
                               ),
-                              ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: 20,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(left: 15),
-                                    child: SizedBox(
-                                      height: getVerticalSize(40),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "lbl_latin".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style:
-                                                AppStyle.txtSFProTextRegular16,
-                                          ),
-                                          Spacer(),
-                                          Checkbox(
-                                              value: true,
-                                              onChanged: (e) {},
-                                              activeColor:
-                                                  ColorConstant.cyan500,
-                                              checkColor:
-                                                  ColorConstant.lightGrey)
-                                        ],
+                              //TabBar 2 for All
+                              Container(
+                                width: size.width,
+                                margin: getMargin(top: 20),
+                                decoration: AppDecoration.fillGray800,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    CustomTextFormField(
+                                      width: 335,
+                                      focusNode: FocusNode(),
+                                      controller:
+                                          controller.radiosearchbarController,
+                                      hintText: "msg_search_by_radio".tr,
+                                      textInputAction: TextInputAction.done,
+                                    ),
+                                    ListView.builder(
+                                      physics: BouncingScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: controller
+                                          .RadioTileItemModelObj.value.length,
+                                      itemBuilder: (context, index) {
+                                        RadioTileItemModel model = controller
+                                            .RadioTileItemModelRecentObj
+                                            .value[index];
+                                        return RadioTile(model);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              //TabBar 3  for Region
+                              Container(
+                                width: size.width,
+                                decoration: AppDecoration.fillGray800,
+                                child: ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: controller
+                                      .RadioTileItemModelObj.value.length,
+                                  itemBuilder: (context, index) {
+                                    RadioTileItemModel model = controller
+                                        .RadioTileItemModelRecentObj
+                                        .value[index];
+                                    return RadioTile(model);
+                                  },
+                                ),
+                              ),
+                              //TabBar 4 for Language
+                              Container(
+                                width: size.width,
+                                margin: getMargin(top: 20),
+                                decoration: AppDecoration.fillGray800,
+                                child: Column(
+                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    CustomTextFormField(
+                                      width: 335,
+                                      focusNode: FocusNode(),
+                                      controller:
+                                          controller.languageSearchController,
+                                      hintText: "msg_search_by_radio".tr,
+                                      textInputAction: TextInputAction.done,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: getPadding(top: 21, left: 15),
+                                        child: Text(
+                                          "lbl_select_language".tr,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.left,
+                                          style: AppStyle
+                                              .txtSFProTextRegular12Gray500,
+                                        ),
                                       ),
                                     ),
-                                  );
-                                },
+                                    ListView.builder(
+                                      physics: BouncingScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: 20,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: EdgeInsets.only(left: 15),
+                                          child: SizedBox(
+                                            height: getVerticalSize(40),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "lbl_latin".tr,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtSFProTextRegular16,
+                                                ),
+                                                Spacer(),
+                                                Checkbox(
+                                                    value: true,
+                                                    onChanged: (e) {},
+                                                    activeColor:
+                                                        ColorConstant.cyan500,
+                                                    checkColor:
+                                                        ColorConstant.lightGrey)
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: controller.auidoSheetVisibility(),
+                          child: Container(
+                            height: getVerticalSize(70),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color(0xffD6DCDF),
+                                Color(0xffE5E8EA),
+                                Color(0xffEBEDEC),
+                                Color(0xffD5D8DB),
+                                Color(0xffBCBAB3),
+                                Color(0xffB0ABA1),
+                              ],
+                            )),
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(width: getHorizontalSize(20)),
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgRectangle10,
+                                    height: getSize(55.00),
+                                    width: getSize(55.00),
+                                    radius: BorderRadius.circular(
+                                      getHorizontalSize(6.00),
+                                    ),
+                                    margin: getMargin(bottom: 1),
+                                  ),
+                                  SizedBox(width: getHorizontalSize(20)),
+                                  Text(
+                                    "lbl_nova".tr,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtSFProTextBold14,
+                                  ),
+                                  Spacer(),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.play_arrow,
+                                          color: Colors.grey, size: 35)),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.star_border_rounded,
+                                          color: Colors.grey, size: 35)),
+                                  SizedBox(width: getHorizontalSize(20)),
+                                ]),
                           ),
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
